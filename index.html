@@ -31,7 +31,7 @@
         </h1>
         <div class="flex items-center text-center">
           <p class="py-6 font-medium">Use Promo Code</p>
-          <span class="font-semibold bg-[#E527B2] text-white py-2 px-4 rounded-md ml-3">SELL200</span>
+          <span id="coupon" class="font-semibold bg-[#E527B2] text-white py-2 px-4 rounded-md ml-3">SELL200</span>
         </div>
       </div>
       <img src="./images/Summer 1.png" class="max-w-6/12" />
@@ -47,7 +47,7 @@
           <h2 class="font-semibold text-3xl">Kitchenware</h2>
           <div class="grid mt-6 gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             <!-- first card -->
-            <div class="card bg-white">
+            <div id="getCardEle1" class="card bg-white">
               <figure class="bg-[#F8F8F8] m-4 h-56"><img src="./images/prod1.png" alt="Shoes" /></figure>
               <div class="card-body justify-center text-center">
                 <div class="flex flex-col items-center gap-1">
@@ -58,13 +58,13 @@
                     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-300" />
                     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-300" />
                   </div>
-                  <h2 class="font-semibold text-2xl">K. Accessories</h2>
-                  <p class="text-[#111111]">39.00 TK</p>
+                  <h2 id="item-name1" class="font-semibold text-2xl">K. Accessories</h2>
+                  <p class="text-[#111111]"><span id="item-price1">39.00</span> TK</p>
                 </div>
               </div>
             </div>
             <!-- second card -->
-            <div class="card bg-white">
+            <div id="getCardEle2" class="card bg-white">
               <figure class="bg-[#F8F8F8] m-4 h-56"><img src="./images/prod1.png" alt="Shoes" /></figure>
               <div class="card-body justify-center text-center">
                 <div class="flex flex-col items-center gap-1">
@@ -75,13 +75,13 @@
                     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-300" />
                     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-300" />
                   </div>
-                  <h2 class="font-semibold text-2xl">K. Accessories</h2>
-                  <p class="text-[#111111]">39.00 TK</p>
+                  <h2 id="item-name2" class="font-semibold text-2xl">Room Cooker</h2>
+                  <p class="text-[#111111]"><span id="item-price2">25.00</span> TK</p>
                 </div>
               </div>
             </div>
             <!-- third card -->
-            <div class="card bg-white">
+            <div id="getCardEle3" class="card bg-white">
               <figure class="bg-[#F8F8F8] m-4 h-56"><img src="./images/prod1.png" alt="Shoes" /></figure>
               <div class="card-body justify-center text-center">
                 <div class="flex flex-col items-center gap-1">
@@ -92,8 +92,8 @@
                     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-300" />
                     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-300" />
                   </div>
-                  <h2 class="font-semibold text-2xl">K. Accessories</h2>
-                  <p class="text-[#111111]">39.00 TK</p>
+                  <h2 id="item-name3" class="font-semibold text-2xl">Home Cooker</h2>
+                  <p class="text-[#111111]"><span id="item-price3">30.00</span> TK</p>
                 </div>
               </div>
             </div>
@@ -226,21 +226,24 @@
     <aside class="w-3/12 pt-40 pl-4">
       <div class="bg-white rounded-md p-8">
         <h3 class="font-medium text-xl mb-2">Have coupon?</h3>
-        <input type="text" placeholder="Coupon code" class="p-2 rounded-l-md border-2 border-r-0"><button
-          class="bg-[#E527B2] px-4 h-11 rounded-r-md text-white">Apply</button>
+        <input id="get-coupon" type="text" placeholder="Coupon code"
+          class="p-2 rounded-l-md border-2 border-r-0"><button id="apply-btn"
+          class="bg-[#e527b2] px-4 h-11 rounded-r-md text-white" disabled>Apply</button>
       </div>
       <div class="bg-white p-4 mt-4 rounded-md relative text-2xl font-medium">
-        <div></div>
+        <div id="add-items"></div>
         <hr class="my-4">
-        <h3>Total price: <span class="text-[#11111175]">00</span></h3>
-        <h3>Discount: <span class="text-[#11111175]">00</span></h3>
-        <h3>Total: <span class="text-[#11111175]">00</span></h3>
+        <h3>Total price: <span id="total-price" class="text-[#11111175]">00</span>TK</h3>
+        <h3>Discount: <span id="discount" class="text-[#11111175]">00</span>TK</h3>
+        <h3>Total: <span id="total" class="text-[#11111175]">00</span>TK</h3>
         <hr class="mt-4 mb-8">
-        <button class="bg-[#e527b2] text-white text-xl font-semibold w-80 p-2 rounded-md absolute -bottom-4">Make
+        <button id="make-purchase"
+          class="bg-[#e527b2] text-white text-xl font-semibold w-80 p-2 rounded-md absolute -bottom-4" disabled>Make
           Purchase</button>
       </div>
     </aside>
   </main>
+  <script src="js/index.js"></script>
 </body>
 
 </html>
