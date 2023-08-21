@@ -7,12 +7,16 @@ document.getElementById("apply-btn").addEventListener("click", (e) => {
   const coupon = document.getElementById("coupon").innerText;
   const getCoupon = document.getElementById("get-coupon");
 
-  if (getCoupon.value === coupon && applyBtn.innerText != "Applied") {
+  if (
+    getCoupon.value === coupon &&
+    applyBtn.innerText != "Applied" &&
+    parseFloat(totalPrice) >= 200
+  ) {
     applyBtn.innerText = "Applied";
     applyBtn.classList.remove("bg-[#e527b2]", "cursor-pointer");
     applyBtn.classList.add("bg-[#e527b25d]", "cursor-not-allowed");
   } else {
-    applyBtn.setAttribute("disabled");
+    applyBtn.setAttribute("disabled", "");
   }
 
   const totalCal = (parseFloat(totalPrice) / 100) * 80;
@@ -65,11 +69,24 @@ document.getElementById("modal-close-btn").addEventListener("click", (e) => {
   const total = document.getElementById("total");
   const discount = document.getElementById("discount");
   const getAddEle = document.getElementById("add-items");
+  const makePurchase = document.getElementById("make-purchase");
+  const applyBtn = document.getElementById("apply-btn");
 
   getAddEle.innerHTML = "";
   totalPrice.innerText = "00";
   total.innerText = "00";
   discount.innerText = "00";
+
+  makePurchase.classList.remove("bg-[#e527b2]", "cursor-pointer");
+  makePurchase.classList.add("bg-[#e527b25d]", "cursor-not-allowed");
+  makePurchase.setAttribute("disabled", "");
+
+  if (parseFloat(totalPrice.innerText) == 0) {
+    applyBtn.setAttribute("disabled", "");
+    applyBtn.classList.remove("bg-[#e527b2]", "cursor-pointer");
+    applyBtn.classList.add("bg-[#e527b25d]", "cursor-not-allowed");
+  }
+
   e.stopPropagation();
 });
 
