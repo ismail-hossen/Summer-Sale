@@ -1,20 +1,19 @@
-// get coupon and remove disabled attribute from apply button
-document.getElementById("get-coupon").addEventListener("keyup", (e) => {
-  const coupon = document.getElementById("coupon").innerText;
-  const applyBtn = document.getElementById("apply-btn");
-  if (e.target.value == coupon) {
-    applyBtn.removeAttribute("disabled");
-  } else {
-    applyBtn.setAttribute("disabled", true);
-  }
-  e.stopPropagation();
-});
-
-// working with apply button
+// working with coupon apply button
 document.getElementById("apply-btn").addEventListener("click", (e) => {
   const totalPrice = document.getElementById("total-price").innerText;
   const total = document.getElementById("total");
   const discount = document.getElementById("discount");
+  const applyBtn = document.getElementById("apply-btn");
+  const coupon = document.getElementById("coupon").innerText;
+  const getCoupon = document.getElementById("get-coupon");
+
+  if (getCoupon.value === coupon && applyBtn.innerText != "Applied") {
+    applyBtn.innerText = "Applied";
+    applyBtn.classList.remove("bg-[#e527b2]", "cursor-pointer");
+    applyBtn.classList.add("bg-[#e527b25d]", "cursor-not-allowed");
+  } else {
+    applyBtn.setAttribute("disabled");
+  }
 
   const totalCal = (parseFloat(totalPrice) / 100) * 80;
   const discountCal = (parseFloat(totalPrice) / 100) * 20;
@@ -28,6 +27,7 @@ document.getElementById("apply-btn").addEventListener("click", (e) => {
 function calAndAddItem(itemName, iPrice) {
   const addItemsDiv = document.getElementById("add-items");
   const totalPrice = document.getElementById("total-price");
+  const applyBtn = document.getElementById("apply-btn");
   const total = document.getElementById("total");
   const makePurchase = document.getElementById("make-purchase");
 
@@ -39,8 +39,16 @@ function calAndAddItem(itemName, iPrice) {
   totalPrice.innerText = cal.toFixed(2);
   total.innerText = cal.toFixed(2);
 
-  if (cal >= 200) {
-    makePurchase.removeAttribute("disable");
+  if (cal > 0) {
+    makePurchase.removeAttribute("disabled");
+    makePurchase.classList.remove("bg-[#e527b25d]", "cursor-not-allowed");
+    makePurchase.classList.add("bg-[#e527b2]", "cursor-pointer");
+  }
+
+  if (cal >= 200 && applyBtn.innerText != "Applied") {
+    applyBtn.removeAttribute("disabled");
+    applyBtn.classList.remove("bg-[#e527b25d]", "cursor-not-allowed");
+    applyBtn.classList.add("cursor-pointer", "bg-[#e527b2]");
   }
 
   const name = document.createElement("h3");
@@ -51,17 +59,70 @@ function calAndAddItem(itemName, iPrice) {
   addItemsDiv.appendChild(name);
 }
 
+// Modal close button
+document.getElementById("modal-close-btn").addEventListener("click", (e) => {
+  const totalPrice = document.getElementById("total-price");
+  const total = document.getElementById("total");
+  const discount = document.getElementById("discount");
+  const getAddEle = document.getElementById("add-items");
+
+  getAddEle.innerHTML = "";
+  totalPrice.innerText = "00";
+  total.innerText = "00";
+  discount.innerText = "00";
+  e.stopPropagation();
+});
+
+// Working with card 1
 document.getElementById("getCardEle1").addEventListener("click", (e) => {
   calAndAddItem("item-name1", "item-price1");
   e.stopPropagation();
 });
 
+// Working with card 2
 document.getElementById("getCardEle2").addEventListener("click", (e) => {
   calAndAddItem("item-name2", "item-price2");
   e.stopPropagation();
 });
 
+// Working with card 3
 document.getElementById("getCardEle3").addEventListener("click", (e) => {
   calAndAddItem("item-name3", "item-price3");
+  e.stopPropagation();
+});
+
+// Working with card 4
+document.getElementById("getCardEle4").addEventListener("click", (e) => {
+  calAndAddItem("item-name4", "item-price4");
+  e.stopPropagation();
+});
+
+// Working with card 5
+document.getElementById("getCardEle5").addEventListener("click", (e) => {
+  calAndAddItem("item-name5", "item-price5");
+  e.stopPropagation();
+});
+
+// Working with card 6
+document.getElementById("getCardEle6").addEventListener("click", (e) => {
+  calAndAddItem("item-name6", "item-price6");
+  e.stopPropagation();
+});
+
+// Working with card 7
+document.getElementById("getCardEle7").addEventListener("click", (e) => {
+  calAndAddItem("item-name7", "item-price7");
+  e.stopPropagation();
+});
+
+// Working with card 8
+document.getElementById("getCardEle8").addEventListener("click", (e) => {
+  calAndAddItem("item-name8", "item-price8");
+  e.stopPropagation();
+});
+
+// Working with card 9
+document.getElementById("getCardEle9").addEventListener("click", (e) => {
+  calAndAddItem("item-name9", "item-price9");
   e.stopPropagation();
 });
